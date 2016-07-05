@@ -3,18 +3,30 @@
  * If you change the type from object to something else, do not forget to update
  * src/container/App.js accordingly.
  */
+import {OSBB} from '../actions/const';
+import { browserHistory } from 'react-router'
+
 const initialState = {
+	formComplete: false,
 	owners:	[{
 		owner: 'test',
 		apartment: -1
 	}]
+	
 };
+
 
 export default function(state = initialState, action) {
 	/* Keep the reducer clean - do not mutate the original state. */
 	//let nextState = Object.assign({}, state);
 
 	switch (action.type) {
+		case OSBB: {
+			//console.log(action.parameter.coowners[0]);
+
+            // console.log(action.parameter);
+			return Object.assign({}, state, { formComplete: true, inviteData: action.parameter })
+		}
 		/*
 		case 'YOUR_ACTION': {
 		  // Modify next state depending on the action and return it

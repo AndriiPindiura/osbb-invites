@@ -8,11 +8,14 @@
  */
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
+import {reducer as formReducer} from 'redux-form';
+
 import osbb from './osbb';
 
 /* Populated by react-webpack-redux:reducer */
 const rootReducer = combineReducers({
-	routerReducer,
-	osbb
+	form: formReducer,
+	routing: routerReducer,
+	osbb: osbb
 });
 export default rootReducer;

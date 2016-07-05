@@ -10,12 +10,12 @@ import React, {
 } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Main from '../components/Main';
+import * as osbbActions from '../actions/osbb'
+
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
   render() {
-    const {actions, osbb} = this.props;
-    return <Main actions={actions} osbb={osbb}/>;
+    return (<div>{this.props.children}</div>);
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -34,8 +34,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
-  const actions = {};
-  const actionMap = { actions: bindActionCreators(actions, dispatch) };
-  return actionMap;
+  // const actions = { osbb: require('../actions/osbb.js') };
+  // const actionMap = { actions: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(osbbActions, dispatch) }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

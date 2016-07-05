@@ -1,7 +1,6 @@
 const redux = require('redux');
-const rootReducer = require('../reducers');
+import rootReducer from '../reducers';
 import createLogger from 'redux-logger';
-
 
 export default function store(initialState) {
 	const logger = createLogger();
@@ -12,7 +11,7 @@ export default function store(initialState) {
 	if (module.hot) {
 		// Enable Webpack hot module replacement for reducers
 		module.hot.accept('../reducers', () => {
-			const nextReducer = require('../reducers').default;
+			const nextReducer = require('../reducers');
 			store.replaceReducer(nextReducer)
 		})
 	}
